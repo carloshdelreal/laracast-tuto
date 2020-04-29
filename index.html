@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <title>Vue App</title>
+  <style>
+    .is-loading{
+      background-color: red;
+    }
+  </style>
 </head>
 <body>
   <div id="root">
@@ -13,19 +18,28 @@
     </ul>
     <input type="text" v-model="newName">
     <button @click="onClick">Add Name</button>
+
+    <button v-bind:title="title">Hover over me</button>
+
+    <button :class=" { 'is-loading': isLoading }" @click="toggleClass">Toggle Me</button>
   </div>
   <script>
     new Vue({
       el: '#root',
       data: {
+        title: 'This is the title',
         newName: '',
-        names: ['joe', 'mary', 'james']
+        names: ['joe', 'mary', 'james'],
+        isLoading: false
       },
 
       methods: {
         onClick(){
           this.names.push(this.newName);
           this.newName = '';
+        },
+        toggleClass() {
+          this.isLoading = !this.isLoading;
         }
       }
     })
