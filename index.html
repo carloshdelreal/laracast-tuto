@@ -28,7 +28,7 @@
 
     <div>
       <button v-bind:title="title">Hover over me</button>
-      <button :class=" { 'is-loading': isLoading }" @click="toggleClass">Toggle Me</button>
+      <button :class=" { 'is-loading': isLoading }" :disabled="!isLoading" @click="toggleClass">Toggle Me</button>
     </div>
 
     <!-- Class binding and conditional classes -->
