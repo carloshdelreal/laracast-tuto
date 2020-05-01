@@ -9,6 +9,13 @@
     .is-loading{
       background-color: red;
     }
+
+    .color-red{
+      color: red;
+    }
+    .color-blue{
+      color: blue;
+    }
   </style>
 </head>
 <body>
@@ -23,6 +30,12 @@
       <button v-bind:title="title">Hover over me</button>
       <button :class=" { 'is-loading': isLoading }" @click="toggleClass">Toggle Me</button>
     </div>
+
+    <!-- Class binding and conditional classes -->
+    <div>
+      <h1 :class="{ 'color-red': isLoading, 'color-blue' : !isLoading }">Hello Title</h1>
+      <button :class="{ 'is-loading': isLoading }" @click="toggleClass">Toggle Me</button>
+    </div>
   </div>
   <script>
     new Vue({
@@ -31,7 +44,9 @@
         title: 'This is the title',
         newName: '',
         names: ['joe', 'mary', 'james'],
-        isLoading: false
+        isLoading: false,
+        className: "color-red"
+
       },
 
       methods: {
